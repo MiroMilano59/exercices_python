@@ -23,7 +23,9 @@
 import random
 
 def compare_numbers(a,b):
-    if int(a) == 0:
+    if int(a) < 0 or int (a) > 100:
+         return "Message d'erreur"
+    elif int(a) == 0:
         return "Vincent Lagaf : Bienvenue au juste prix, vous avez 30 secondes pour deviner le prix de cet objet. Je vous donne un indice : Son prix est compris entre 1 et 100"
     elif int(a) == int(b):
         return "C'est gagné!"
@@ -41,5 +43,3 @@ while player_1_number != random_computer_number:
         
         player_1_number = int(input())
         print(compare_numbers(player_1_number, random_computer_number))
-
-
