@@ -1,6 +1,6 @@
 import random
 
-def list_of_x_random_int(x, min_val=0, max_val=100):
+def list_of_x_random_int(x, min_val=0, max_val=1000):
     """
     Génère une liste de x entiers aléatoires dans la plage [min_val, max_val).
     """
@@ -27,8 +27,8 @@ def top_x(input_list, x):
     return top_x_list
 
 # Exemple d'utilisation :
-random_numbers = list_of_x_random_int(10)
+random_numbers = list_of_x_random_int(1000)
 print("Liste générée aléatoirement :", random_numbers)
 
-x_largest_numbers = top_x(random_numbers, 3)
+x_largest_numbers = top_x(random_numbers, 10)
 print("Les 3 plus grands nombres :", x_largest_numbers)
