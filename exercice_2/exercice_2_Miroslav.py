@@ -18,7 +18,7 @@
 # • Vous pouvez ajouter un second compteur qui somme les scores de chaque partie
 # • Et enfin vous pouvez demander à l'utilisateur s'il veut refaire une partie ou pas
 # """
-
+"""
 from random import *
 
 
@@ -36,7 +36,7 @@ def question(maxi, nombre_du_pc):
         try:
             reponse_int = int(reponse_str)
             if not 1 <= reponse_int <= maxi:
-                print(f"ERREUR: Vous devez rentrer un nombre entre 1 et str({maxi}).")
+                print(f"ERREUR: Vous devez rentrer un nombre entre 1 et {str(maxi)}.")
             else:
                 if reponse_int < nombre_magique:
                     print(f"le nombre est plus grand... Il vous reste {vies} vies.")
@@ -47,9 +47,10 @@ def question(maxi, nombre_du_pc):
                         if rejouer == "1":
                             system()
                         else:
+                            print("A bientôt !")
                             return 
                 elif reponse_int > nombre_magique:
-                    print("le nombre est plus petit... Il vous reste {vies} vies.")
+                    print(f"le nombre est plus petit... Il vous reste {vies} vies.")
                     vies -= 1
                     if vies == 0:
                         print("Vous avez perdu !")
@@ -57,15 +58,17 @@ def question(maxi, nombre_du_pc):
                         if rejouer == "1":
                             system()
                         else:
+                            print("A bientôt !")
                             return 
                 else:
                     print("Bravo ! Vous avez gagné !")
                     print("FIN DU JEU")
                     print()
-                    rejouer = input("Tapez 1 si vous soulez rejouer !")
+                    rejouer = input("Tapez 1 si vous voulez rejouer !")
                     if rejouer == "1":
                         system()
                     else:
+                        print("A bientôt !")
                         return 
         except ValueError:
             print("ERREUR: Vous devez rentrer un nombre.")
@@ -80,17 +83,17 @@ def niveau_jeu():
 def mode_multi():
     print("Bienvenue dans le jeu, vous devez deviner un nombre entre 1 et la valeur définie !")
     print("Vous avez 3 chances/vies pour trouver le nombre magique.")
-    print("1) Souhaitez-vous jouer en solo ?")
-    print("2) Souhaitez-vous jouer à deux ?")
-    reponse_multi_str = input("Veuillez entrer votre réponse entre 1 et 2 :")
-    while True:
-        try:
-            reponse_multi_int = int(reponse_multi_str)
-            if not 1 <= reponse_multi_int <= 2:
-                print("ERREUR: Vous devez rentrer un nombre entre 1 et 2.")
-            return reponse_multi_int
-        except ValueError:
-            print("ERREUR: Vous devez rentrer un nombre.")
+    # print("1) Souhaitez-vous jouer en solo ?")
+    # print("2) Souhaitez-vous jouer à deux ?")
+    # reponse_multi_str = input("Veuillez entrer votre réponse entre 1 et 2 :")
+    # while True:
+    #     try:
+    #         reponse_multi_int = int(reponse_multi_str)
+    #         if not 1 <= reponse_multi_int <= 2:
+    #             print("ERREUR: Vous devez rentrer un nombre entre 1 et 2.")
+    #         return reponse_multi_int
+    #     except ValueError:
+    #         print("ERREUR: Vous devez rentrer un nombre.")
 
 def system():
     choix_joueur = mode_multi()
@@ -100,4 +103,81 @@ def system():
 
 system()
 
+"""
 
+from random import *
+
+
+def nombrepc(maxi):
+    nombre = randint(1,int(maxi))
+    return nombre
+
+
+def question(maxi, nombre_du_pc):
+    maxi = maxi
+    nombre_magique = nombre_du_pc
+    vies = 3
+    while vies > -1:
+        reponse_str = input("Quel est le nombre magique ?")
+        try:
+            reponse_int = int(reponse_str)
+            if not 1 <= reponse_int <= maxi:
+                print(f"ERREUR: Vous devez rentrer un nombre entre 1 et {str(maxi)}.") 
+            else:
+                if reponse_int < nombre_magique:
+                    print(f"le nombre est plus grand... Il vous reste {vies} vies.")
+                    vies -= 1
+                elif reponse_int > nombre_magique:
+                    print(f"le nombre est plus petit... Il vous reste {vies} vies.")
+                    vies -= 1
+                else:
+                    print("Bravo ! Vous avez gagné !")
+                    print("FIN DU JEU")
+                    print()
+                    rejouer = input("Tapez 1 si vous voulez rejouer ou n'importe quelle touche si vous souhaitez arreter : ")
+                    if rejouer == "1":
+                        system()
+                    else:
+                        print("A bientôt !")
+                        return 
+        except ValueError:
+            print("ERREUR: Vous devez rentrer un nombre.")                
+    print(f"Vous avez perdu ! le numéro magique etait {nombre_magique}")
+    print()
+    rejouer = input("Tapez 1 si vous soulez rejouer ou n'importe quelle touche si vous souhaitez arreter : ")
+    if rejouer == "1":
+        print()
+        system()
+    else:
+        print("A bientôt !")
+        return 
+    
+
+def niveau_jeu():
+    nb_max_str = input("Le nombre inférieur du jeu étant de 1. Quel est le nombre supérieur souhaité ?")
+    nb_max_int = int(nb_max_str)
+    return nb_max_int
+
+
+def mode_multi():
+    print("Bienvenue dans le jeu, vous devez deviner un nombre entre 1 et la valeur définie !")
+    print("Vous avez 3 chances/vies pour trouver le nombre magique.")
+    # print("1) Souhaitez-vous jouer en solo ?")
+    # print("2) Souhaitez-vous jouer à deux ?")
+    # reponse_multi_str = input("Veuillez entrer votre réponse entre 1 et 2 :")
+    # while True:
+    #     try:
+    #         reponse_multi_int = int(reponse_multi_str)
+    #         if not 1 <= reponse_multi_int <= 2:
+    #             print("ERREUR: Vous devez rentrer un nombre entre 1 et 2.")
+    #         return reponse_multi_int
+    #     except ValueError:
+    #         print("ERREUR: Vous devez rentrer un nombre.")
+
+def system():
+    choix_joueur = mode_multi()
+    nb_max = niveau_jeu()
+    nombre_magique = nombrepc(nb_max)
+    question(nb_max, nombre_magique)
+
+system()
