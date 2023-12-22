@@ -15,8 +15,6 @@ def nombres_aleatoire():
     for i in range(1, 101):
         x = randint(1,100)
         liste_de_nombre.append(x)
-    print(liste_de_nombre)
-    print(len(liste_de_nombre))
     return liste_de_nombre
 
 
@@ -25,13 +23,10 @@ def plus_grand_nombre(list_nb):
     liste_plus_grand_nombres = []
     nombre_plus_grand = liste_de_nombre[0]
     for x in range(1, 11):
-        for i in liste_de_nombre:
-            if i > nombre_plus_grand:
-                nombre_plus_grand = i
-                liste_plus_grand_nombres.append(nombre_plus_grand)
-    for nombre in liste_plus_grand_nombres:
-        liste_de_nombre.remove(nombre)
-    print(len(liste_de_nombre))
+        resultat = max(liste_de_nombre)
+        liste_plus_grand_nombres.append(resultat)
+        liste_de_nombre.remove(resultat)
+    print(liste_de_nombre)
     print(liste_plus_grand_nombres)
 
 
